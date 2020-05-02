@@ -1,0 +1,22 @@
+name: 'Close Pull'
+description: 'A GitHub action to close a pull request and optionally delete its branch'
+inputs:
+  token:
+    description: 'GitHub auth token'
+    default: ${{ github.token }}
+  repository:
+    description: 'The target GitHub repository'
+  pull-request-number:
+    description: 'The number of the pull request to close'
+    default: ${{ github.event.number }}
+  comment:
+    description: 'A comment to make on the pull request before closing'
+  delete-branch:
+    description: 'Delete the pull request branch'
+    default: false
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'slash'
+  color: 'gray-dark'
