@@ -58,7 +58,7 @@ jobs:
             [1]: https://github.com/peter-evans/create-pull-request
           branch: ci-test-${{ matrix.target }}
 
-      - name: Close Pull Request
+      - name: Close Pull
         uses: ./
         with:
           pull-request-number: ${{ steps.cpr.outputs.pr_number }}
