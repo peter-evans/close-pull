@@ -8623,10 +8623,10 @@ async function run() {
 
     if (inputs.comment && inputs.comment.length > 0) {
       core.info("Adding a comment before closing the pull request");
-      await octokit.pulls.createComment({
+      await octokit.issues.createComment({
         owner: repo[0],
         repo: repo[1],
-        pull_number: inputs.pullRequestNumber,
+        issue_number: inputs.pullRequestNumber,
         body: inputs.comment,
       });
     }
