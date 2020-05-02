@@ -23,10 +23,7 @@ async function run() {
     };
     core.debug(`Inputs: ${inspect(inputs)}`);
 
-    const repository = inputs.repository
-      ? inputs.repository
-      : process.env.GITHUB_REPOSITORY;
-    const repo = repository.split("/");
+    const repo = inputs.repository.split("/");
     core.debug(`Repo: ${inspect(repo)}`);
 
     const octokit = new github.GitHub(inputs.token);
