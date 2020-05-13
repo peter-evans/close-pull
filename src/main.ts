@@ -24,7 +24,7 @@ async function run(): Promise<void> {
     core.debug(`Inputs: ${inspect(inputs)}`)
 
     const repo = inputs.repository.split('/')
-    core.debug(`Repo: ${inspect(repo)}`)
+    core.debug(`Test: ${inspect(repo)}`)
 
     const octokit = new github.GitHub(inputs.token)
 
