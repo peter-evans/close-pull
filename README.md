@@ -17,24 +17,6 @@ A GitHub action to close a pull request and optionally delete its branch.
           delete-branch: true
 ```
 
-### Reject all pull requests to a repository
-
-```yml
-on:
-  pull_request:
-    types: [opened]
-jobs:
-  closePullRequest:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Close Pull
-        uses: peter-evans/close-pull@v1
-        with:
-          comment: |
-            Sorry. Pull requests are not accepted for this repository.
-            Auto-closing this pull request.
-```
-
 ### Action inputs
 
 | Name | Description | Default |
