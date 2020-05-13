@@ -2052,7 +2052,7 @@ function run() {
             };
             core.debug(`Inputs: ${util_1.inspect(inputs)}`);
             const repo = inputs.repository.split('/');
-            core.debug(`Repo: ${util_1.inspect(repo)}`);
+            core.debug(`Test: ${util_1.inspect(repo)}`);
             const octokit = new github.GitHub(inputs.token);
             if (inputs.comment && inputs.comment.length > 0) {
                 core.info('Adding a comment before closing the pull request');
