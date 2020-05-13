@@ -3,7 +3,25 @@ on:
   repository_dispatch:
     types: [ci-test-command]
 jobs:
+  beforeBuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create URL to the run output
+        id: vars
+        run: echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
+      - name: Update comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          body: |
+            > [Command run output][1]
+
+            [1]: ${{ steps.vars.outputs.run-url }}
+
   build:
+    needs: beforeBuild
     runs-on: ubuntu-latest
     steps:
       # Checkout the pull request branch
