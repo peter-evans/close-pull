@@ -23,7 +23,7 @@ async function run(): Promise<void> {
     }
     core.debug(`Inputs: ${inspect(inputs)}`)
 
-    const repo = inputs.repository.split('/')
+    const [owner, repo] = inputs.repository.split('/')
     core.debug(`Repo: ${inspect(repo)}`)
 
     const octokit = github.getOctokit(inputs.token)
@@ -31,8 +31,8 @@ async function run(): Promise<void> {
     if (inputs.comment && inputs.comment.length > 0) {
       core.info('Adding a comment before closing the pull request')
       await octokit.issues.createComment({
-        owner: repo[0],
-        repo: repo[1],
+        owner: owner,
+        repo: repo,
         issue_number: inputs.pullRequestNumber,
         body: inputs.comment
       })
@@ -40,16 +40,16 @@ async function run(): Promise<void> {
 
     core.info('Closing the pull request')
     await octokit.pulls.update({
-      owner: repo[0],
-      repo: repo[1],
+      owner: owner,
+      repo: repo,
       pull_number: inputs.pullRequestNumber,
       state: 'closed'
     })
 
     if (inputs.deleteBranch) {
       const {data: pull} = await octokit.pulls.get({
-        owner: repo[0],
-        repo: repo[1],
+        owner: owner,
+        repo: repo,
         pull_number: inputs.pullRequestNumber
       })
       core.debug(`Pull: ${inspect(pull)}`)
@@ -62,8 +62,8 @@ async function run(): Promise<void> {
       core.info('Attempting to delete the pull request branch')
       try {
         await octokit.git.deleteRef({
-          owner: repo[0],
-          repo: repo[1],
+          owner: owner,
+          repo: repo,
           ref
         })
       } catch (error) {
