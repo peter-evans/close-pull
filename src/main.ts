@@ -26,7 +26,7 @@ async function run(): Promise<void> {
     const repo = inputs.repository.split('/')
     core.debug(`Repo: ${inspect(repo)}`)
 
-    const octokit = new github.GitHub(inputs.token)
+    const octokit = github.getOctokit(inputs.token)
 
     if (inputs.comment && inputs.comment.length > 0) {
       core.info('Adding a comment before closing the pull request')
