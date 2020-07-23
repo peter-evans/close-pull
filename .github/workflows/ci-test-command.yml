@@ -63,11 +63,9 @@ jobs:
 
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v2
+        uses: peter-evans/create-pull-request@v3
         with:
           commit-message: '[CI] test ${{ matrix.target }}'
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: '[CI] test ${{ matrix.target }}'
           body: |
             - CI test case for target '${{ matrix.target }}'
