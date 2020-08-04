@@ -21,17 +21,18 @@ A GitHub action to close a pull request and optionally delete its branch.
 
 | Name | Description | Default |
 | --- | --- | --- |
-| `token` | `GITHUB_TOKEN` or a `repo` scoped [PAT](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). | `GITHUB_TOKEN` |
+| `token` | `GITHUB_TOKEN` or a `repo` scoped [PAT](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). | `GITHUB_TOKEN` |
 | `repository` | The GitHub repository containing the pull request. | Current repository |
 | `pull-request-number` | The number of the pull request to close. | `github.event.number` |
 | `comment` | A comment to make on the pull request before closing. | |
 | `delete-branch` | Delete the pull request branch. | `false` |
 
-Note: Deleting branches will fail silently for pull requests from forks.
+Note: Deleting branches will fail silently for pull requests to public repositories from forks.
+Private repositories can be configured to [enable workflows](https://docs.github.com/en/github/administering-a-repository/disabling-or-limiting-github-actions-for-a-repository#enabling-workflows-for-private-repository-forks) from forks to run without restriction.
 
 ### Accessing pull requests in other repositories
 
-You can close pull requests in another repository by using a [PAT](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) instead of `GITHUB_TOKEN`.
+You can close pull requests in another repository by using a [PAT](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) instead of `GITHUB_TOKEN`.
 The user associated with the PAT must have write access to the repository.
 
 ## License
