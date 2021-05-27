@@ -30,7 +30,7 @@ async function run(): Promise<void> {
 
     if (inputs.comment && inputs.comment.length > 0) {
       core.info('Adding a comment before closing the pull request')
-      await octokit.issues.createComment({
+      await octokit.rest.issues.createComment({
         owner: owner,
         repo: repo,
         issue_number: inputs.pullRequestNumber,
@@ -39,7 +39,7 @@ async function run(): Promise<void> {
     }
 
     core.info('Closing the pull request')
-    await octokit.pulls.update({
+    await octokit.rest.pulls.update({
       owner: owner,
       repo: repo,
       pull_number: inputs.pullRequestNumber,
@@ -47,7 +47,7 @@ async function run(): Promise<void> {
     })
 
     if (inputs.deleteBranch) {
-      const {data: pull} = await octokit.pulls.get({
+      const {data: pull} = await octokit.rest.pulls.get({
         owner: owner,
         repo: repo,
         pull_number: inputs.pullRequestNumber
@@ -61,7 +61,7 @@ async function run(): Promise<void> {
       // the pull request was raised from a fork.
       core.info('Attempting to delete the pull request branch')
       try {
-        await octokit.git.deleteRef({
+        await octokit.rest.git.deleteRef({
           owner: owner,
           repo: repo,
           ref
