@@ -70,7 +70,7 @@ async function run(): Promise<void> {
         core.debug(inspect(error))
       }
     }
-  } catch (error) {
+  } catch (error: any) {
     core.debug(inspect(error))
     core.setFailed(error.message)
   }
