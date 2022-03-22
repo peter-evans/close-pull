@@ -16,7 +16,7 @@ inputs:
     description: 'Delete the pull request branch'
     default: false
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 branding:
   icon: 'slash'
