@@ -1,6 +1,6 @@
 {
   "name": "close-pull",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "A GitHub action to close a pull request and optionally delete its branch",
   "main": "lib/main.js",
