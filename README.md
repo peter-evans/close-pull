@@ -10,7 +10,7 @@ A GitHub action to close a pull request and optionally delete its branch.
 
 ```yml
       - name: Close Pull
-        uses: peter-evans/close-pull@v1
+        uses: peter-evans/close-pull@v2
         with:
           pull-request-number: 1
           comment: Auto-closing pull request
