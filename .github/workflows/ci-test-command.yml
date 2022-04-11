@@ -37,7 +37,7 @@ jobs:
       - run: npm run format-check
       - run: npm run lint
       - run: npm run test
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: dist
           path: dist
