@@ -2,6 +2,11 @@ import * as core from '@actions/core'
 import * as github from '@actions/github'
 import {inspect} from 'util'
 
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message
+  return String(error)
+}
+
 function toBool(input, defaultVal): boolean {
   if (typeof input === 'boolean') {
     return input
@@ -70,9 +75,9 @@ async function run(): Promise<void> {
         core.debug(inspect(error))
       }
     }
-  } catch (error: any) {
+  } catch (error) {
     core.debug(inspect(error))
-    core.setFailed(error.message)
+    core.setFailed(getErrorMessage(error))
   }
 }
 
