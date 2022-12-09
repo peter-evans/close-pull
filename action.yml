@@ -2,7 +2,7 @@ name: 'Close Pull'
 description: 'A GitHub action to close a pull request and optionally delete its branch'
 inputs:
   token:
-    description: 'GitHub auth token'
+    description: 'GITHUB_TOKEN or a repo scoped PAT'
     default: ${{ github.token }}
   repository:
     description: 'The GitHub repository containing the pull request'
