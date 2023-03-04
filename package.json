@@ -27,22 +27,22 @@
   },
   "homepage": "https://github.com/peter-evans/close-pull#readme",
   "dependencies": {
-    "@actions/core": "^1.10.0",
-    "@actions/github": "^5.1.1"
+    "@actions/core": "1.10.0",
+    "@actions/github": "5.1.1"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.3",
-    "@types/node": "^18.14.6",
-    "@typescript-eslint/parser": "^5.54.0",
-    "@vercel/ncc": "^0.36.1",
-    "eslint": "^8.35.0",
-    "eslint-plugin-github": "^4.6.1",
-    "eslint-plugin-jest": "^25.7.0",
-    "jest": "^27.5.1",
-    "jest-circus": "^29.4.3",
-    "js-yaml": "^4.1.0",
-    "prettier": "^2.8.4",
-    "ts-jest": "^27.1.5",
-    "typescript": "^4.9.5"
+    "@types/jest": "27.0.3",
+    "@types/node": "18.14.6",
+    "@typescript-eslint/parser": "5.54.0",
+    "@vercel/ncc": "0.36.1",
+    "eslint": "8.35.0",
+    "eslint-plugin-github": "4.6.1",
+    "eslint-plugin-jest": "25.7.0",
+    "jest": "27.5.1",
+    "jest-circus": "29.4.3",
+    "js-yaml": "4.1.0",
+    "prettier": "2.8.4",
+    "ts-jest": "27.1.5",
+    "typescript": "4.9.5"
   }
 }
