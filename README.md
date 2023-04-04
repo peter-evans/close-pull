@@ -11,10 +11,10 @@ A GitHub action to close a pull request and optionally delete its branch.
 
 The same functionality exists in the GitHub CLI. See the documentation [here](https://cli.github.com/manual/gh_pr_close).
 ```yml
-    - name: Enable Pull Request Automerge
+    - name: Close Pull
       run: gh pr close --comment "Auto-closing pull request" --delete-branch "1"
       env:
-        GH_TOKEN: ${{ secrets.PAT }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 If you prefer to use this action:
