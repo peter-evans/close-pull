@@ -16,8 +16,28 @@ inputs:
     description: 'Delete the pull request branch'
     default: false
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: composite
+  steps:
+    - name: Set parameters
+      id: params
+      shell: bash
+      run: |
+        if [ -n "${{ inputs.comment }}" ]; then
+          echo comment="--comment \"${{ inputs.comment }}\"" >> $GITHUB_OUTPUT
+        fi
+        if [ "${{ inputs.delete-branch }}" = true ]; then
+          echo delete-branch="--delete-branch" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Enable automerge
+      shell: bash
+      run: |
+        gh pr close -R "${{ inputs.repository }}" \
+        ${{ steps.params.outputs.comment }} \
+        ${{ steps.params.outputs.delete-branch }} \
+        "${{ inputs.pull-request-number }}"
+      env:
+        GH_TOKEN: ${{ inputs.token }}
 branding:
-  icon: 'slash'
+  icon: 'git-pull-request'
   color: 'gray-dark'
