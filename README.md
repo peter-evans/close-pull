@@ -6,11 +6,21 @@ A GitHub action to close a pull request and optionally delete its branch.
 
 ## Usage
 
-### Close a pull request and delete its branch
+| :exclamation:  Using this action is no longer necessary   |
+|-----------------------------------------------------------|
 
+The same functionality exists in the GitHub CLI. See the documentation [here](https://cli.github.com/manual/gh_pr_close).
+```yml
+    - name: Enable Pull Request Automerge
+      run: gh pr close --comment "Auto-closing pull request" --delete-branch "1"
+      env:
+        GH_TOKEN: ${{ secrets.PAT }}
+```
+
+If you prefer to use this action:
 ```yml
       - name: Close Pull
-        uses: peter-evans/close-pull@v2
+        uses: peter-evans/close-pull@v3
         with:
           pull-request-number: 1
           comment: Auto-closing pull request
