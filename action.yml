@@ -18,7 +18,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Set parameters
+    - name: Set Parameters
       id: params
       shell: bash
       run: |
@@ -29,7 +29,7 @@ runs:
           echo delete-branch="--delete-branch" >> $GITHUB_OUTPUT
         fi
 
-    - name: Enable automerge
+    - name: Close Pull
       shell: bash
       run: |
         gh pr close -R "${{ inputs.repository }}" \
