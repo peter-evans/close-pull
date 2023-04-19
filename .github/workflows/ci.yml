@@ -62,5 +62,7 @@ jobs:
         uses: ./
         with:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-          comment: '[CI] test ${{ matrix.os }}'
+          comment: |
+            [CI]
+            test ${{ matrix.os }}
           delete-branch: true
