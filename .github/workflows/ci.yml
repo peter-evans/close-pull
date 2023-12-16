@@ -54,7 +54,7 @@ jobs:
             [1]: https://github.com/peter-evans/create-pull-request
           branch: ci-test-${{ matrix.os }}-${{ github.sha }}
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: action.yml
           path: .
